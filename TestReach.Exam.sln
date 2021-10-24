@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestReach.Exam.Core", "TestReach.Exam.Core\TestReach.Exam.Core.csproj", "{AF011F1F-A7AE-4793-8C68-31FB1CB843BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{B409B034-93E6-4284-8F12-7C7F68EF624E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B409B034-93E6-4284-8F12-7C7F68EF624E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B409B034-93E6-4284-8F12-7C7F68EF624E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF011F1F-A7AE-4793-8C68-31FB1CB843BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF011F1F-A7AE-4793-8C68-31FB1CB843BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF011F1F-A7AE-4793-8C68-31FB1CB843BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF011F1F-A7AE-4793-8C68-31FB1CB843BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
