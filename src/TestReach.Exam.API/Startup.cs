@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -7,6 +8,7 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using System;
 using TestReach.Exam.API.Configuration;
+using TestReach.Exam.Data.Contexts;
 
 namespace TestReach.Exam.Registration
 {
@@ -40,6 +42,9 @@ namespace TestReach.Exam.Registration
                         }
                     });
             });
+
+            services.AddDbContext<ExamContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddSerilogServices(Configuration);
 

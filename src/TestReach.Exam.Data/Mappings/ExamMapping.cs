@@ -1,0 +1,28 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TestReach.Exam.Data.Mappings
+{
+    class ExamMapping : IEntityTypeConfiguration<Domain.Entities.Exam>
+    {
+        public void Configure(EntityTypeBuilder<Domain.Entities.Exam> builder)
+        {
+            builder.HasKey(c => c.Id);
+
+            builder.Property(c => c.Name)
+                .IsRequired();
+
+            builder.Property(c => c.CreationDate)
+                .IsRequired();
+
+            builder.HasMany(c => c.Questions)
+                .WithOne(c => c.Exam)
+                .HasForeignKey(c => c.ExamId);
+        }
+    }
+}
