@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestReach.Exam.Domain.Entities;
 
 namespace TestReach.Exam.Data.Mappings
 {
@@ -27,6 +28,20 @@ namespace TestReach.Exam.Data.Mappings
             builder.HasMany(c => c.ExamAttempts)
                 .WithOne(c => c.Exam)
                 .HasForeignKey(c => c.ExamId);
+
+
+            SetupInitialData(builder);
+        }
+
+        private void SetupInitialData(EntityTypeBuilder<Domain.Entities.Exam> builder)
+        {
+            builder.HasData(
+                    new Domain.Entities.Exam { Id = "EX202001", Name = "Exam 1" },
+                    new Domain.Entities.Exam { Id = "EX202002", Name = "Exam 2" },
+                    new Domain.Entities.Exam { Id = "EX202003", Name = "Exam 3" },
+                    new Domain.Entities.Exam { Id = "EX202004", Name = "Exam 4" }
+                );
         }
     }
 }
+

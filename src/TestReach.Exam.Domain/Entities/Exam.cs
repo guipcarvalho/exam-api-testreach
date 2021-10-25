@@ -6,6 +6,11 @@ namespace TestReach.Exam.Domain.Entities
 {
     public class Exam : IEntity
     {
+        public Exam()
+        {
+            CreationDate = DateTime.Now;
+        }
+
         public string Id { get; set; }
         public string Name { get; set; }
         public DateTime CreationDate { get; set; }
