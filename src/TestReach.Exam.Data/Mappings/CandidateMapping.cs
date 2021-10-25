@@ -20,6 +20,8 @@ namespace TestReach.Exam.Data.Mappings
             builder.HasMany(c => c.ExamAttempts)
                 .WithOne(c => c.Candidate)
                 .HasForeignKey(c => c.CandidateId);
+
+            builder.HasIndex(i => new { i.Email, i.Name });
         }
     }
 }

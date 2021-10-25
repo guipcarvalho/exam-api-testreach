@@ -27,16 +27,16 @@ namespace TestReach.Exam.Data.Mappings
         private void SetupInitialData(EntityTypeBuilder<Question> builder)
         {
             builder.HasData(
-                    new Question { ExamId = "EX202001", QuestionNumber = 1, CorrectAnswer= 'A' },
-                    new Question { ExamId = "EX202001", QuestionNumber = 2, CorrectAnswer= 'C' },
-                    new Question { ExamId = "EX202001", QuestionNumber = 3, CorrectAnswer= 'C' },
-                    new Question { ExamId = "EX202001", QuestionNumber = 4, CorrectAnswer= 'A' },
-                    new Question { ExamId = "EX202001", QuestionNumber = 5, CorrectAnswer= 'B' },
-                    new Question { ExamId = "EX202001", QuestionNumber = 6, CorrectAnswer= 'B' },
-                    new Question { ExamId = "EX202001", QuestionNumber = 7, CorrectAnswer= 'C' },
-                    new Question { ExamId = "EX202001", QuestionNumber = 8, CorrectAnswer= 'A' },
-                    new Question { ExamId = "EX202001", QuestionNumber = 9, CorrectAnswer= 'D' },
-                    new Question { ExamId = "EX202001", QuestionNumber = 10, CorrectAnswer= 'A' },
+                    new Question { ExamId = "EX202001", QuestionNumber = 1, CorrectAnswer = 'A' },
+                    new Question { ExamId = "EX202001", QuestionNumber = 2, CorrectAnswer = 'C' },
+                    new Question { ExamId = "EX202001", QuestionNumber = 3, CorrectAnswer = 'C' },
+                    new Question { ExamId = "EX202001", QuestionNumber = 4, CorrectAnswer = 'A' },
+                    new Question { ExamId = "EX202001", QuestionNumber = 5, CorrectAnswer = 'B' },
+                    new Question { ExamId = "EX202001", QuestionNumber = 6, CorrectAnswer = 'B' },
+                    new Question { ExamId = "EX202001", QuestionNumber = 7, CorrectAnswer = 'C' },
+                    new Question { ExamId = "EX202001", QuestionNumber = 8, CorrectAnswer = 'A' },
+                    new Question { ExamId = "EX202001", QuestionNumber = 9, CorrectAnswer = 'D' },
+                    new Question { ExamId = "EX202001", QuestionNumber = 10, CorrectAnswer = 'A' },
 
                     new Question { ExamId = "EX202002", QuestionNumber = 1, CorrectAnswer = 'B' },
                     new Question { ExamId = "EX202002", QuestionNumber = 2, CorrectAnswer = 'D' },

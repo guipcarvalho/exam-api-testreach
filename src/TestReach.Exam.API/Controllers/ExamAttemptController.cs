@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TestReach.Exam.Application.Services.Contracts;
 
 namespace TestReach.Exam.Registration.Controllers
 {
@@ -11,29 +12,17 @@ namespace TestReach.Exam.Registration.Controllers
     [Route("exam-attempt")]
     public class ExamAttemptController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        private readonly IExamAttemptService _service;
 
-        private readonly ILogger<ExamAttemptController> _logger;
-
-        public ExamAttemptController(ILogger<ExamAttemptController> logger)
+        public ExamAttemptController(IExamAttemptService service)
         {
-            _logger = logger;
+            _service = service;
         }
 
-        [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpPost]
+        public async Task<IActionResult> Import()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+            return Ok();
         }
     }
 }
