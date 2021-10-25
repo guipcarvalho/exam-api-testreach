@@ -5,6 +5,11 @@ namespace TestReach.Exam.Domain.Entities
 {
     public class Answer : IEntity
     {
+        public Answer()
+        {
+            Id = Guid.NewGuid();
+        }
+
         public Guid Id { get; set; }
         public Guid ExamAttemptId { get; set; }
         public int QuestionNumber { get; set; }

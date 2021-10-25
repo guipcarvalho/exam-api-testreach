@@ -9,6 +9,7 @@ namespace TestReach.Exam.Data.Mappings
         public void Configure(EntityTypeBuilder<Answer> builder)
         {
             builder.HasKey(c => c.Id);
+            builder.Property(c => c.Id).ValueGeneratedOnAdd();
 
             builder.Property(c => c.QuestionNumber)
                 .IsRequired();

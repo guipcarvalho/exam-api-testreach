@@ -11,7 +11,7 @@ namespace TestReach.Exam.API.Configuration
     {
         public static void RegisterServices(this IServiceCollection services)
         {
-            services.AddScoped<IDbContext, ExamContext>();
+            //services.AddScoped<IDbContext, ExamContext>();
         }
     }
 }

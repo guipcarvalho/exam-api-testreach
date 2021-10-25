@@ -23,6 +23,10 @@ namespace TestReach.Exam.Data.Mappings
             builder.HasMany(c => c.Questions)
                 .WithOne(c => c.Exam)
                 .HasForeignKey(c => c.ExamId);
+
+            builder.HasMany(c => c.ExamAttempts)
+                .WithOne(c => c.Exam)
+                .HasForeignKey(c => c.ExamId);
         }
     }
 }

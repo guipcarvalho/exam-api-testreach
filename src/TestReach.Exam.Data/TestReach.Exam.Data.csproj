@@ -14,10 +14,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.11" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\TestReach.Exam.Core\TestReach.Exam.Core.csproj" />
+    <ProjectReference Include="..\TestReach.Exam.Core\TestReach.Exam.Core.csproj" />
     <ProjectReference Include="..\TestReach.Exam.Domain\TestReach.Exam.Domain.csproj" />
   </ItemGroup>
 

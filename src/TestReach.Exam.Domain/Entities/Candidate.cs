@@ -9,6 +9,11 @@ namespace TestReach.Exam.Domain.Entities
 {
     public class Candidate : IEntity
     {
+        public Candidate()
+        {
+            Id = Guid.NewGuid();
+        }
+
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }

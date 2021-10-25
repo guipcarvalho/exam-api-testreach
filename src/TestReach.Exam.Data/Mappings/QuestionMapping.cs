@@ -9,6 +9,7 @@ namespace TestReach.Exam.Data.Mappings
         public void Configure(EntityTypeBuilder<Question> builder)
         {
             builder.HasKey(c => c.Id);
+            builder.Property(c => c.Id).ValueGeneratedOnAdd();
 
             builder.Property(c => c.QuestionNumber)
                 .IsRequired();
@@ -17,7 +18,8 @@ namespace TestReach.Exam.Data.Mappings
                 .IsRequired();
 
             builder.HasOne(c => c.Exam)
-                .WithMany(c => c.Questions);
+                .WithMany(c => c.Questions)
+                .IsRequired();
         }
     }
 }
