@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestReach.Exam.Core.Mediator
+namespace TestReach.Exam.Core.Enums
 {
-    interface IMediatorHandler
+    public enum Response
     {
+        Success,
+        Failed,
+        Invalid,
+        NotFound
     }
 }

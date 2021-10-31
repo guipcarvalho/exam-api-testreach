@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestReach.Exam.Core.Mediator
+namespace TestReach.Exam.Core.Messages
 {
-    public class MediatorHandler : IMediatorHandler
+    public abstract class CommandHandler
     {
-
     }
 }

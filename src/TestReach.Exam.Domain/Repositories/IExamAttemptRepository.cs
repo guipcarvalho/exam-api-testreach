@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestReach.Exam.Core.Data;
 
-namespace TestReach.Exam.Core.Data
+namespace TestReach.Exam.Domain.Repositories
 {
-    public interface IRepository : IDisposable
+    public interface IExamAttemptRepository : IRepository
     {
-        IUnitOfWork UnitOfWork { get; }
     }
 }

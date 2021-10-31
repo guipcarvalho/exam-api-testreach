@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Helpers\" />
+    <ProjectReference Include="..\TestReach.Exam.Core\TestReach.Exam.Core.csproj" />
+    <ProjectReference Include="..\TestReach.Exam.Domain\TestReach.Exam.Domain.csproj" />
   </ItemGroup>
 
 </Project>

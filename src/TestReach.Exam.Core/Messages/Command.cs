@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation.Results;
+using MediatR;
 
 namespace TestReach.Exam.Core.Messages
 {
-    class Command
+    public abstract class Command : IRequest<GenericResult>
     {
+        public bool IsValid() => Validate().IsValid;
+
+        public abstract ValidationResult Validate();
     }
 }

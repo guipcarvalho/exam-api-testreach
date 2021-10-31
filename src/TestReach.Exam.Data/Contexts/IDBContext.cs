@@ -1,8 +1,16 @@
-﻿using TestReach.Exam.Core.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using TestReach.Exam.Core.Data;
+using TestReach.Exam.Domain.Entities;
 
 namespace TestReach.Exam.Data.Contexts
 {
-    public interface IDbContext: IUnitOfWork
+    public interface IDbContext: IUnitOfWork, IDisposable
     {
+        public DbSet<Domain.Entities.Exam> Exams { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<ExamAttempt> ExamAttempts { get; set; }
+        public DbSet<Candidate> Candidates { get; set; }
+        public DbSet<Answer> Answers { get; set; }
     }
 }
