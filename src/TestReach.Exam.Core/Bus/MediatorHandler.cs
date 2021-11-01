@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,14 +11,21 @@ namespace TestReach.Exam.Core.Bus
 {
     public class MediatorHandler : IMediatorHandler
     {
-        public Task PublishEvent<T>(T @event) where T : Event
+        private readonly IMediator _mediator;
+
+        public MediatorHandler(IMediator mediator)
         {
-            throw new NotImplementedException();
+            _mediator = mediator;
+        }
+
+        public Task PublishEvent<T>(T @event, CancellationToken cancellationToken = default) where T : Event
+        {
+            return _mediator.Publish(@event, cancellationToken);
         }
 
         public Task<GenericResult> SendCommand<T>(T command, CancellationToken cancellationToken = default) where T : Command
         {
-            throw new NotImplementedException();
+            return _mediator.Send(command, cancellationToken);
         }
     }
 }

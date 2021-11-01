@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace TestReach.Exam.Core.Data
 {
-    public interface IRepository : IDisposable
+    public interface IRepository<T> : IDisposable
+        where T : class, IEntity
     {
         IUnitOfWork UnitOfWork { get; }
+        void Add(T entity);
     }
 }

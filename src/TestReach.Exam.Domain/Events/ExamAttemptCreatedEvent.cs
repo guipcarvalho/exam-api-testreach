@@ -11,5 +11,10 @@ namespace TestReach.Exam.Domain.Events
     public class ExamAttemptCreatedEvent : Event
     {
         public ExamAttempt ExamAttempt { get; set; }
+
+        public ExamAttemptCreatedEvent(ExamAttempt examAttempt)
+        {
+            ExamAttempt = examAttempt;
+        }
     }
 }

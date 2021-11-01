@@ -24,9 +24,12 @@ namespace TestReach.Exam.Registration.Controllers
         [HttpPost("import")]
         public async Task<IActionResult> Import(IFormFile file, CancellationToken cancellationToken)
         {
+            if (file == null || file.Length == 0)
+                return BadRequest("Please send a file to be imported");
+
             using var fileStream = file.OpenReadStream();
 
-            var result = await _service.ImportAttempts(fileStream, file.Name.Substring(file.Name.LastIndexOf('.')), cancellationToken);
+            var result = await _service.ImportAttempts(fileStream, file.FileName.Substring(file.FileName.LastIndexOf('.') + 1), cancellationToken);
 
             if(result.ResponseCode == Core.Enums.Response.Success)
                 return Ok(result);
@@ -34,7 +37,7 @@ namespace TestReach.Exam.Registration.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("export/exam/{examId}/candidate/{candidateEmail}")]
+        [HttpGet("export/exam/{examId}/candidate/{candidateEmail}")]
         public async Task<IActionResult> ExportExamAttemptToFile(string examId, string candidateEmail, CancellationToken cancellationToken)
         {
             var result = await _service.ExportExamAttemptToFile(Response.Body, examId, candidateEmail, "csv", cancellationToken);

@@ -1,3 +1,4 @@
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -49,6 +50,10 @@ namespace TestReach.Exam.Registration
             services.AddSerilogServices(Configuration);
 
             services.RegisterServices();
+
+            services.ConfigureAutoMapper();
+
+            services.AddMediatR(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

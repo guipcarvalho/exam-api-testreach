@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TestReach.Exam.Application.Helpers.Contracts;
 using TestReach.Exam.Application.Services.Contracts;
+using TestReach.Exam.Core.Bus;
 using TestReach.Exam.Core.Messages;
 using TestReach.Exam.Domain.Commands;
 using TestReach.Exam.Domain.Repositories;
@@ -17,11 +18,13 @@ namespace TestReach.Exam.Application.Services
     {
         private readonly Func<string, IExamAttemptFileParser> _fileParserFactory;
         private readonly IExamAttemptRepository _repository;
+        private readonly IMediatorHandler _mediator;
 
-        public ExamAttemptService(Func<string, IExamAttemptFileParser> fileParserFactory, IExamAttemptRepository repository)
+        public ExamAttemptService(Func<string, IExamAttemptFileParser> fileParserFactory, IExamAttemptRepository repository, IMediatorHandler mediator)
         {
             _fileParserFactory = fileParserFactory;
             _repository = repository;
+            _mediator = mediator;
         }
 
         public async Task<GenericResult> ExportExamAttemptToFile(Stream outputStream, string examId, string candidateEmail, string fileType, CancellationToken cancellationToken)
@@ -45,18 +48,18 @@ namespace TestReach.Exam.Application.Services
 
         public async Task<GenericResult> ImportAttempts(Stream fileStream, string fileType, CancellationToken cancellationToken)
         {
-            IEnumerable<CreateExamAttemptCommand> commands;
+            var command = new BatchCreateExamAttemptCommand();
 
             try
             {
-                commands = await _fileParserFactory(fileType).GetExamAttemps(fileStream);
+                command.Commands = await _fileParserFactory(fileType).GetExamAttemps(fileStream);
             }
             catch (NotSupportedException ex)
             {
                 return new GenericResult(Core.Enums.Response.Invalid, ex.Message);
             }
 
-            return new GenericResult(Core.Enums.Response.Success, "Exam Attempts Imported successfully!");
+            return await _mediator.SendCommand(command, cancellationToken);
         }
     }
 }

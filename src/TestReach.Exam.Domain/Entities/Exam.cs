@@ -15,7 +15,7 @@ namespace TestReach.Exam.Domain.Entities
         public string Name { get; set; }
         public DateTime CreationDate { get; set; }
 
-        public List<Question> Questions { get; set; }
-        public List<ExamAttempt> ExamAttempts { get; set; }
+        public virtual List<Question> Questions { get; set; }
+        public virtual List<ExamAttempt> ExamAttempts { get; set; }
     }
 }

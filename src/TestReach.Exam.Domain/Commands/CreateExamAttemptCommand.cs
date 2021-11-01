@@ -1,9 +1,11 @@
-﻿using System;
+﻿using FluentValidation.Results;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestReach.Exam.Core.Messages;
+using TestReach.Exam.Domain.Commands.Validations;
 using TestReach.Exam.Domain.Entities;
 
 namespace TestReach.Exam.Domain.Commands
@@ -16,5 +18,7 @@ namespace TestReach.Exam.Domain.Commands
         public string CandidateName { get; set; }
 
         public List<Answer> Answers { get; set; }
+
+        public override ValidationResult Validate() => new CreateExamAttemptCommandValidation().Validate(this);
     }
 }

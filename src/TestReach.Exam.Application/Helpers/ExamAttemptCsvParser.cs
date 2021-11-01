@@ -29,8 +29,11 @@ namespace TestReach.Exam.Application.Helpers
                 if (fields.Length != 6)
                     throw new NotSupportedException("Columns different than expected");
 
+                if (string.IsNullOrWhiteSpace(fields[5])) //skips if answer is missing
+                    continue;
+                
                 var examId = fields[0];
-                DateTime.TryParseExact(fields[1], "yyyy-MM-dd", new CultureInfo("en-US"), DateTimeStyles.None, out var examDate);
+                var hasDate = DateTime.TryParseExact(fields[1], "yyyy-MM-dd", new CultureInfo("en-US"), DateTimeStyles.None, out var examDate);
                 var candidateEmail = fields[2];
                 var candidateName = fields[3];
                 int.TryParse(fields[4], out var question);
@@ -46,7 +49,7 @@ namespace TestReach.Exam.Application.Helpers
                     lastCommand = new CreateExamAttemptCommand
                     {
                         ExamId = examId,
-                        ExamDate = examDate,
+                        ExamDate = hasDate ? examDate : null,
                         CandidateEmail = candidateEmail,
                         CandidateName = candidateName,
                         Answers = new List<Answer>

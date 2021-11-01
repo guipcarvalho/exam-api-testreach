@@ -15,6 +15,6 @@ namespace TestReach.Exam.Domain.Entities
         public int QuestionNumber { get; set; }
         public char ChosenOption { get; set; }
 
-        public ExamAttempt ExamAttempt { get; set; }
+        public virtual ExamAttempt ExamAttempt { get; set; }
     }
 }

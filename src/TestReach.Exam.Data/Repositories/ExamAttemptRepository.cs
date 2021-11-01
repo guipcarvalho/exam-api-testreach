@@ -8,10 +8,11 @@ using TestReach.Exam.Domain.Dtos;
 using TestReach.Exam.Domain.Entities;
 using TestReach.Exam.Domain.Repositories;
 using System.Linq;
+using System;
 
 namespace TestReach.Exam.Data.Repositories
 {
-    public sealed class ExamAttemptRepository : IExamAttemptRepository
+    public sealed class ExamAttemptRepository : BaseRepository<ExamAttempt>, IExamAttemptRepository
     {
         private readonly IDbContext _context;
         public IUnitOfWork UnitOfWork => _context;
@@ -20,6 +21,8 @@ namespace TestReach.Exam.Data.Repositories
         {
             _context = context;
         }
+
+        public override DbSet<ExamAttempt> GetDbSet() => _context.ExamAttempts;
 
         public Task<List<ExamAttemptFlatDto>> GetByExamIdAndCandidate(string examId, string candidateEmail, CancellationToken cancellationToken)
         {

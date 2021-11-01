@@ -14,6 +14,9 @@ namespace TestReach.Exam.Data.Mappings
             builder.Property(c => c.AttemptDate)
                 .IsRequired();
 
+            builder.Property(c => c.Score)
+                .IsRequired();
+
             builder.HasOne(c => c.Candidate)
                 .WithMany(c => c.ExamAttempts)
                 .IsRequired();
