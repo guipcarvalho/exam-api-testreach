@@ -4,10 +4,11 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-using TestReach.Exam.Application.Dtos;
 using TestReach.Exam.Application.Helpers.Contracts;
 using TestReach.Exam.Domain.Commands;
+using TestReach.Exam.Domain.Dtos;
 using TestReach.Exam.Domain.Entities;
 
 namespace TestReach.Exam.Application.Helpers
@@ -68,7 +69,7 @@ namespace TestReach.Exam.Application.Helpers
 
             foreach (var examAttempt in examAttempts)
             {
-                await streamWriter.WriteLineAsync($"{examAttempt.ExamId},{examAttempt.ExamDate},{examAttempt.CandidateEmail},{examAttempt.CandidateName},{examAttempt.QuestionNumber},{examAttempt.Answer}");
+                await streamWriter.WriteLineAsync($"{examAttempt.ExamId}|{examAttempt.ExamDate}|{examAttempt.CandidateEmail}|{examAttempt.CandidateName}|{examAttempt.QuestionNumber}|{examAttempt.Answer}");
             }
         }
     }
