@@ -63,17 +63,19 @@ namespace TestReach.Exam.Registration
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ExamContext dataContext, ILogger logger, IConfiguration config)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ExamContext dataContext)
         {
-            logger.Information(config.GetConnectionString("DefaultConnection"));
             dataContext.Database.Migrate();
 
             app.UseDeveloperExceptionPage();
             
             app.UseSerilogRequestLogging();
 
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestReach.Exam.API v1"));
+            if (!env.IsEnvironment("Testing"))
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestReach.Exam.API v1"));
+            }
 
             app.UseHttpsRedirection();
 
