@@ -9,6 +9,6 @@ namespace TestReach.Exam.Domain.Repositories
 {
     public interface IExamAttemptRepository : IRepository<ExamAttempt>
     {
-        Task<List<ExamAttemptFlatDto>> GetByExamIdAndCandidate(string examId, string candidateEmail, CancellationToken cancellationToken);
+        Task<List<ExamAttemptDto>> GetByExamIdAndCandidate(string examId, string candidateEmail, CancellationToken cancellationToken);
     }
 }

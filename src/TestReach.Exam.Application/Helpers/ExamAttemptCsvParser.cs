@@ -66,14 +66,17 @@ namespace TestReach.Exam.Application.Helpers
             return commands;
         }
 
-        public async Task ParseToFile(Stream outputStream, IEnumerable<ExamAttemptFlatDto> examAttempts)
+        public async Task ParseToFile(Stream outputStream, IEnumerable<ExamAttemptDto> examAttempts)
         {
-            using var streamWriter = new StreamWriter(outputStream);
+            using var streamWriter = new StreamWriter(outputStream, leaveOpen: true);
+
+            await streamWriter.WriteLineAsync($"{nameof(ExamAttemptDto.ExamId)}|{nameof(ExamAttemptDto.AverageScore)}|{nameof(ExamAttemptDto.CandidateEmail)}|{nameof(ExamAttemptDto.CandidateName)}|{nameof(ExamAttemptDto.Score)}|{nameof(ExamAttemptDto.PercentRank)}");
 
             foreach (var examAttempt in examAttempts)
             {
-                await streamWriter.WriteLineAsync($"{examAttempt.ExamId}|{examAttempt.ExamDate}|{examAttempt.CandidateEmail}|{examAttempt.CandidateName}|{examAttempt.QuestionNumber}|{examAttempt.Answer}");
+                await streamWriter.WriteLineAsync($"{examAttempt.ExamId}|{examAttempt.AverageScore:N2}|{examAttempt.CandidateEmail}|{examAttempt.CandidateName}|{examAttempt.Score:N2}|{examAttempt.PercentRank:N2}");
             }
+            streamWriter.Flush();
         }
     }
 }

@@ -10,6 +10,6 @@ namespace TestReach.Exam.Application.Helpers.Contracts
     public interface IExamAttemptFileParser
     {
         Task<IEnumerable<CreateExamAttemptCommand>> GetExamAttemps(Stream stream);
-        Task ParseToFile(Stream outputStream, IEnumerable<ExamAttemptFlatDto> examAttempts);
+        Task ParseToFile(Stream outputStream, IEnumerable<ExamAttemptDto> examAttempts);
     }
 }

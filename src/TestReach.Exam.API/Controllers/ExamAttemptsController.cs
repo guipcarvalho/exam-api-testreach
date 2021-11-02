@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using TestReach.Exam.Application.Services.Contracts;
@@ -40,14 +42,13 @@ namespace TestReach.Exam.Registration.Controllers
         [HttpGet("export/exam/{examId}/candidate/{candidateEmail}")]
         public async Task<IActionResult> ExportExamAttemptToFile(string examId, string candidateEmail, CancellationToken cancellationToken)
         {
-            var result = await _service.ExportExamAttemptToFile(Response.Body, examId, candidateEmail, "csv", cancellationToken);
+            var result = await _service.ExportExamAttemptToFile(examId, candidateEmail, "csv", cancellationToken);
 
+            var file = result.Data as byte[];
             switch (result.ResponseCode)
             {
                 case Core.Enums.Response.Success:
-                    Response.ContentType = "application/octet-stream";
-                    Response.Headers.Append("Content-Disposition", "attachment; filename=examAttempt.csv");
-                    return Ok();
+                    return File(file, "application/octet-stream", "examAttempt.csv");
 
                 case Core.Enums.Response.NotFound:
                     return NotFound(result);

@@ -2,13 +2,13 @@
 
 namespace TestReach.Exam.Domain.Dtos
 {
-    public class ExamAttemptFlatDto
+    public class ExamAttemptDto
     {
         public string ExamId { get; set; }
-        public DateTime ExamDate { get; set; }
+        public decimal AverageScore { get; set; }
         public string CandidateEmail { get; set; }
         public string CandidateName { get; set; }
-        public int QuestionNumber { get; set; }
-        public char Answer { get; set; }
+        public decimal Score { get; set; }
+        public decimal PercentRank { get; set; }
     }
 }

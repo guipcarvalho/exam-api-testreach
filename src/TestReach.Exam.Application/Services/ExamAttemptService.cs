@@ -27,7 +27,7 @@ namespace TestReach.Exam.Application.Services
             _mediator = mediator;
         }
 
-        public async Task<GenericResult> ExportExamAttemptToFile(Stream outputStream, string examId, string candidateEmail, string fileType, CancellationToken cancellationToken)
+        public async Task<GenericResult> ExportExamAttemptToFile(string examId, string candidateEmail, string fileType, CancellationToken cancellationToken)
         {
             var examAttempt = await _repository.GetByExamIdAndCandidate(examId, candidateEmail, cancellationToken);
 
@@ -36,14 +36,15 @@ namespace TestReach.Exam.Application.Services
 
             try
             {
-                await _fileParserFactory(fileType).ParseToFile(outputStream, examAttempt);
+                using var memoryStream = new MemoryStream();
+                await _fileParserFactory(fileType).ParseToFile(memoryStream, examAttempt);
+
+                return new GenericResult(Core.Enums.Response.Success, memoryStream.ToArray());
             }
             catch (NotSupportedException ex)
             {
                 return new GenericResult(Core.Enums.Response.Invalid, ex.Message);
             }
-
-            return new GenericResult(Core.Enums.Response.Success, "File generated!");
         }
 
         public async Task<GenericResult> ImportAttempts(Stream fileStream, string fileType, CancellationToken cancellationToken)

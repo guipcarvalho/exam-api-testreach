@@ -13,6 +13,6 @@ namespace TestReach.Exam.Application.Services.Contracts
     {
         Task<GenericResult> ImportAttempts(Stream fileStream, string fileType, CancellationToken cancellationToken);
 
-        Task<GenericResult> ExportExamAttemptToFile(Stream outputStream, string examId, string candidateEmail, string fileType, CancellationToken cancellationToken);
+        Task<GenericResult> ExportExamAttemptToFile(string examId, string candidateEmail, string fileType, CancellationToken cancellationToken);
     }
 }
