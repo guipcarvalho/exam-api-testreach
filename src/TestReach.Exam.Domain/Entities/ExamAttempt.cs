@@ -22,7 +22,7 @@ namespace TestReach.Exam.Domain.Entities
         public virtual Exam Exam { get; set; }
         public virtual List<Answer> Answers { get; set; }
 
-        public decimal CalculateScore()
+        public virtual decimal CalculateScore()
         {
             decimal total = Exam.Questions.Count;
 

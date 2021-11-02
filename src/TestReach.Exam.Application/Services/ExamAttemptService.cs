@@ -29,15 +29,15 @@ namespace TestReach.Exam.Application.Services
 
         public async Task<GenericResult> ExportExamAttemptToFile(string examId, string candidateEmail, string fileType, CancellationToken cancellationToken)
         {
-            var examAttempt = await _repository.GetByExamIdAndCandidate(examId, candidateEmail, cancellationToken);
+            var examAttempts = await _repository.GetByExamIdAndCandidate(examId, candidateEmail, cancellationToken);
 
-            if (!examAttempt.Any())
+            if (!examAttempts.Any())
                 return new GenericResult(Core.Enums.Response.NotFound, $"Exam attempt not found for exam {examId} and candidate {candidateEmail}");
 
             try
             {
                 using var memoryStream = new MemoryStream();
-                await _fileParserFactory(fileType).ParseToFile(memoryStream, examAttempt);
+                await _fileParserFactory(fileType).ParseToFile(memoryStream, examAttempts);
 
                 return new GenericResult(Core.Enums.Response.Success, memoryStream.ToArray());
             }
