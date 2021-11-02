@@ -9,21 +9,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestReach.Exam.Application"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestReach.Exam.Domain", "src\TestReach.Exam.Domain\TestReach.Exam.Domain.csproj", "{A31E8B4E-3F39-463E-A88C-7A59D892F1B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestReach.Exam.Data", "src\TestReach.Exam.Data\TestReach.Exam.Data.csproj", "{ED4015DC-BE62-4510-A86E-CEA417B67EFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestReach.Exam.Data", "src\TestReach.Exam.Data\TestReach.Exam.Data.csproj", "{ED4015DC-BE62-4510-A86E-CEA417B67EFC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AEB944FC-5115-4701-9176-9AAA38F07669}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestReach.Exam.UnitTests", "tests\TestReach.Exam.UnitTests\TestReach.Exam.UnitTests.csproj", "{462EC01D-7BDA-4804-9677-83AFBBFD717C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestReach.Exam.UnitTests", "tests\TestReach.Exam.UnitTests\TestReach.Exam.UnitTests.csproj", "{462EC01D-7BDA-4804-9677-83AFBBFD717C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestReach.Exam.IntegrationTests", "tests\TestReach.Exam.IntegrationTests\TestReach.Exam.IntegrationTests.csproj", "{B409B034-93E6-4284-8F12-7C7F68EF624E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestReach.Exam.IntegrationTests", "tests\TestReach.Exam.IntegrationTests\TestReach.Exam.IntegrationTests.csproj", "{B409B034-93E6-4284-8F12-7C7F68EF624E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{74E854FD-0B5A-4785-B154-EEC671EE5891}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		docker-compose.yml = docker-compose.yml
+		src\Dockerfile = src\Dockerfile
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestReach.Exam.Core", "src\TestReach.Exam.Core\TestReach.Exam.Core.csproj", "{AF011F1F-A7AE-4793-8C68-31FB1CB843BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestReach.Exam.Core", "src\TestReach.Exam.Core\TestReach.Exam.Core.csproj", "{AF011F1F-A7AE-4793-8C68-31FB1CB843BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

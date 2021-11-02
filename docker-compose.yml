@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+
+  sqldb:
+    container_name: sqldb
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+        SA_PASSWORD: "TestReach123"
+        ACCEPT_EULA: "Y"
+    ports:
+        - 14331:1433
+    networks:
+        - testreach
+  api:
+    container_name: api-service
+    build: ./src
+    restart: always
+    ports:
+      - 3000:80
+    depends_on:
+      - sqldb
+    links:
+      - sqldb
+    networks:
+      - testreach
+        
+
+networks:
+  testreach:
+    name: testreach

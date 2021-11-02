@@ -6,7 +6,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["TestReach.Exam.API/TestReach.Exam.API.csproj", "TestReach.Exam.API/"]
-RUN dotnet restore "TestReach.Exam/TestReach.Exam.csproj"
+RUN dotnet restore "TestReach.Exam.API/TestReach.Exam.API.csproj"
 COPY . .
 WORKDIR "/src/TestReach.Exam.API"
 RUN dotnet build "TestReach.Exam.API.csproj" -c Release -o /app/build

@@ -44,7 +44,7 @@ namespace TestReach.Exam.Registration
                         Description = "API to import and export test exam attempts.",
                         Contact = new OpenApiContact
                         {
-                            Name = "Luís Guilherme Carvalho",
+                            Name = "Luis Guilherme Carvalho",
                             Url = new Uri("https://github.com/guipcarvalho")
                         }
                     });
@@ -63,13 +63,13 @@ namespace TestReach.Exam.Registration
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ExamContext dataContext, ILogger logger, IConfiguration config)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            logger.Information(config.GetConnectionString("DefaultConnection"));
+            dataContext.Database.Migrate();
 
+            app.UseDeveloperExceptionPage();
+            
             app.UseSerilogRequestLogging();
 
             app.UseSwagger();
